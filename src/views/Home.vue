@@ -2,8 +2,7 @@
   <div class="beers-container" v-for="beer in beers" :key="beer.id">
     <div class="beer-description">
       <div class="beer-title">
-        <h3>{{ beer.title.slice(0, 7) }}</h3>
-        <h4>{{ beer.title.slice(6) }}</h4>
+        <h3>{{ beer.title.slice(0, 7) }} {{ beer.title.slice(6) }}</h3>
       </div>
       <p>
         {{ beer.description }}
@@ -63,11 +62,10 @@ export default {
     .beer-title {
       display: flex;
       h3 {
-        color: #e58200;
-      }
-
-      h4 {
-        margin-left: 4px;
+        color: white;
+        margin-bottom: 25px;
+        font-size: 1.5rem;
+        text-align: center;
       }
 
       p {
@@ -75,7 +73,16 @@ export default {
         font-weight: normal;
         width: 580px;
       }
+      ::after {
+        content: '';
+        height: 1px;
+        display: block;
+        margin-top: 8px;
+        background-color: #e58200;
+        width: 180px;
+      }
     }
+
     .beer-info {
       display: flex;
       justify-content: space-evenly;

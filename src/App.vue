@@ -7,12 +7,21 @@
     </div>
 
     <div class="button-login">
-      <button>Fazer Login</button>
+      <button @click="Modal">Fazer Login</button>
       <span class="register-link"> ou <a href="">Cadastre-se</a> </span>
     </div>
   </div>
   <router-view />
 </template>
+
+<script>
+import Modal from '@/components/Modal.vue';
+export default {
+  data() {
+    Modal;
+  },
+};
+</script>
 
 <style lang="scss">
 * {
@@ -72,7 +81,7 @@ body {
       font-family: 'Roboto Slab', serif;
 
       &:hover {
-        background-color: #d27e00;
+        background-color: lighten($color: #e58200, $amount: 10%);
       }
     }
 
