@@ -1,0 +1,75 @@
+[
+  {
+    "id": 0,
+    "title": "SwillO IPA",
+    "description": "Aromática e amarga, a IPA encantou paladares e conseguiu espaço no mercado antes dominado pelas cervejas de larga escala, categoria que engloba basicamente a American Lager ou American Light Lager. Seu sucesso foi tanto que, atualmente, dá para dizer que depois das mainstream, é o tipo de cerveja mais popular no mundo.",
+    "type": "IPA",
+    "ibu": 46,
+    "alcohol": 5.5,
+    "temperature_one": 2,
+    "temperature_two": 4,
+    "glass": "Pint",
+    "price": 18.00,
+    "vol": 600,
+    "image": "swillo-ipa.png"
+  },
+  {
+    "id": 1,
+    "title": "SwillO Weiss",
+    "description": "No século XV, Os “Degenberg” (uma família nobre da Baviera) são considerados os pioneiros na fabricação moderna da Weissbier. A cerveja de Trigo rapidamente se popularizou na região da Baviera, gerando muitos lucros para o clã Degenberg, porém despertou o interesse e a inveja dos duques locais. Após vários anos de discussões, os direitos de produção da Weissbier ficaram com os duques.",
+    "type": "Weiss",
+    "ibu": 17,
+    "alcohol": 5,
+    "temperature_one": 1,
+    "temperature_two": 5,
+    "glass": "Weizen",
+    "price": 16.00,
+    "vol": 600,
+    "image": "swillo-weiss.png"
+
+  },
+  {
+    "id": 2,
+    "title": "SwillO Stout",
+    "description": "A cerveja Stout (pronunciada como istalt) é um estilo de cerveja escura que surgiu na Irlanda, derivada da cerveja Porter, também de origem irlandesa. Ao contrário da primeira, as Porters eram muito comuns nos portos, onde eram consumidas pelos carregadores que trabalhavam no local. Devido a alta carga de trabalho, eles precisavam de cervejas mais fortes e de corpo pesado. Assim, surgiu o estilo Porter – cervejas adocicadas com notas de chocolate, e, em alguns casos, até mesmo de avelã.",
+    "type": "Stout",
+    "ibu": 35,
+    "alcohol": 6,
+    "temperature_one": 2,
+    "temperature_two": 8,
+    "glass": "Nonic",
+    "price": 20.00,
+    "vol": 600,
+    "image": "swillo-stout.png"
+
+  },
+  {
+    "id": 3,
+    "title": "SwillO Lager",
+    "description": "As cervejas Lager surgiram no final do século 14, mas se tornaram populares apenas na metade do século 19. De maneira geral, elas têm menor teor alcoólico que as Ale, são mais gasosas e maltadas, menos amargas (devido ao pouco lúpulo), mais refrescantes e pouco frutadas.",
+    "type": "Lager",
+    "ibu": 12,
+    "alcohol": 4.5,
+    "temperature_one": 2,
+    "temperature_two": 7,
+    "glass": "Pint",
+    "price": 12.00,
+    "vol": 600,
+    "image": "swillo-lager.png"
+
+  },
+  {
+    "id": 4,
+    "title": "SwillO SGA",
+    "description": "As fermentadas do tipo Strong Golden Ale nasceram depois da Segunda Guerra Mundial, como uma resposta ao crescimento da popularidade das cervejas Pilsen pelo mundo. A cervejaria Moortgat foi a primeira a criar esse tipo de cerveja, a Duvel, com aromas e sabores frutados (banana, pera, maçã), amargor pronunciado e alto teor alcoólico.",
+    "type": "SGA",
+    "ibu": 25,
+    "alcohol": 8.5,
+    "temperature_one": 1,
+    "temperature_two": 6,
+    "glass": "Tulipa",
+    "price": 24.00,
+    "vol": 600,
+    "image": "swillo-sga.png"
+  }
+]

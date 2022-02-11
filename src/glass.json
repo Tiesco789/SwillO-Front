@@ -1,0 +1,16 @@
+[
+  {
+    "id": 0,
+    "title": "Taça",
+    "price": 35.00,
+    "vol": 350,
+    "image": "glass.png"
+  },
+  {
+    "id": 1,
+    "title": "Caneca",
+    "price": 50.00,
+    "vol": 500,
+    "image": "mug.png"
+  }
+]
