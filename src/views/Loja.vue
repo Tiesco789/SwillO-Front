@@ -49,6 +49,7 @@ export default {
 <style lang="scss">
 h1 {
   text-align: center;
+  padding-bottom: 20px;
   margin: 80px 120px;
   border-bottom: 1px solid #2a2633;
 }
