@@ -1,26 +1,33 @@
 <template>
   <div id="nav">
     <div class="links">
+      <img class="logo" :src="require(`@/assets/logo.svg`)" />
       <router-link to="/">SOBRE A CERVEJA</router-link>
       <router-link to="/contato">CONTATO</router-link>
       <router-link to="/loja">LOJA</router-link>
     </div>
 
     <div class="button-login">
-      <button @click="Modal">Fazer Login</button>
-      <span class="register-link"> ou <a href="">Cadastre-se</a> </span>
+      <router-link class="login" to="/login">Fazer Login</router-link>
+      <span
+        >ou
+        <router-link class="register" to="/cadastro"
+          >Cadastre-se</router-link
+        ></span
+      >
+    </div>
+
+    <div>
+      <router-link to="/carrinho">
+        <img class="cart" :src="require(`@/assets/cart.svg`)" />
+      </router-link>
     </div>
   </div>
   <router-view />
 </template>
 
 <script>
-import Modal from '@/components/Modal.vue';
-export default {
-  data() {
-    Modal;
-  },
-};
+export default {};
 </script>
 
 <style lang="scss">
@@ -37,17 +44,18 @@ body {
   background-color: #1b191f;
   color: white;
   font-family: 'Inter', sans-serif;
-  margin: 5rem 0;
 }
 
 #nav {
   display: flex;
   text-align: center;
   width: 100%;
-  margin: 80px auto;
+  padding: 3rem;
+  margin-bottom: 80px;
   justify-content: center;
   align-items: center;
   font-weight: 500;
+  box-shadow: 0 0 0 0.1rem #e58200;
 
   :first-child a {
     font-family: 'Roboto Slab', serif;
@@ -61,6 +69,11 @@ body {
     }
   }
 
+  .links {
+    display: flex;
+    align-items: center;
+  }
+
   .button-login {
     display: flex;
     justify-content: space-between;
@@ -68,7 +81,7 @@ body {
     align-items: center;
     margin-left: 72px;
 
-    button {
+    a.login {
       background-color: #e58200;
       border: none;
       border-radius: 4px;
@@ -85,6 +98,15 @@ body {
       }
     }
 
+    a.register {
+      color: #e58200;
+      font-size: 16px;
+      font-weight: 500;
+      font-family: 'Roboto Slab', serif;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
     .register-link {
       color: white;
       margin: 0;
@@ -97,6 +119,14 @@ body {
         color: #d27e00;
       }
     }
+  }
+  img.cart {
+    width: 40px;
+    height: 40px;
+    margin-left: 72px;
+    cursor: pointer;
+    filter: invert(57%) sepia(97%) saturate(1706%) hue-rotate(3deg)
+      brightness(85%) contrast(101%);
   }
 }
 </style>
