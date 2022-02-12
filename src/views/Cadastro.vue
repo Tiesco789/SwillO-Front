@@ -63,6 +63,10 @@ export default {
       font-size: 16px;
       padding: 16px;
 
+      &:hover {
+        outline: 1px solid #e58200;
+      }
+
       &:focus {
         outline: 1px solid #e58200;
       }
