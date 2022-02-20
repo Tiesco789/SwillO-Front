@@ -1,17 +1,23 @@
+/* eslint-disable */
 <template>
-  <div>
-    <Barra />
-    <router-view />
-  </div>
+  <BarraNavegacaoLogado v-if="usuarioestaLogado" />
+  <BarraNavegacaoDeslogado v-else />
 </template>
-
 <script>
-import Barra from "@/components/Barra";
+import BarraNavegacaoDeslogado from "@/components/BarraNavegacaoDeslogado";
+import BarraNavegacaoLogado from "@/components/BarraNavegacaoLogado";
+/* eslint-disable */
 export default {
   components: {
-    Barra,
+      BarraNavegacaoLogado,
+      BarraNavegacaoDeslogado
   },
-};
+  computed: {
+    usuarioestaLogado() {
+        return Boolean(localStorage.getItem('token'))
+    }
+  }
+}
 </script>
 
 <style lang="scss">
@@ -27,7 +33,7 @@ export default {
 body {
   background-color: #1b191f;
   color: white;
-  font-family: "Inter", sans-serif;
+  font-family: 'Inter', sans-serif;
 }
 
 #nav {
@@ -42,7 +48,7 @@ body {
   box-shadow: 0 0 0 0.1rem #e58200;
 
   :first-child a {
-    font-family: "Roboto Slab", serif;
+    font-family: 'Roboto Slab', serif;
     color: white;
     text-decoration: none;
     margin-left: 72px;
@@ -75,7 +81,7 @@ body {
       font-weight: 500;
       cursor: pointer;
       transition: 0.2s;
-      font-family: "Roboto Slab", serif;
+      font-family: 'Roboto Slab', serif;
 
       &:hover {
         background-color: lighten($color: #e58200, $amount: 10%);
@@ -86,7 +92,7 @@ body {
       color: #e58200;
       font-size: 16px;
       font-weight: 500;
-      font-family: "Roboto Slab", serif;
+      font-family: 'Roboto Slab', serif;
       cursor: pointer;
       transition: 0.2s;
     }
@@ -99,7 +105,7 @@ body {
       a {
         font-size: 16px;
         line-height: 24px;
-        font-family: "Inter", sans-serif;
+        font-family: 'Inter', sans-serif;
         color: #d27e00;
       }
     }

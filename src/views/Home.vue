@@ -1,18 +1,26 @@
 <template>
-  <div class="beers-container" v-for="beer in beers" :key="beer.id">
+  <div class="beers-container" v-for="beer in beers" :key="beer.name">
     <div class="beer-description">
-      <div class="beer-title">
+      <!-- <div class="beer-title">
         <h3>{{ beer.title.slice(0, 7) }} {{ beer.title.slice(6) }}</h3>
-      </div>
-      <p>
+      </div> -->
+      <!-- <p>
         {{ beer.description }}
-      </p>
+      </p> -->
       <div class="beer-info">
         <div>
           <span>TIPO:</span>
-          <h3>{{ beer.type }}</h3>
+          <h3>{{ beer.name }}</h3>
         </div>
         <div>
+          <span>CATEGORIA:</span>
+          <h3>{{ beer.category }}</h3>
+        </div>
+        <div>
+          <span>VALOR:</span>
+          <h3>R$ {{ beer.value }}</h3>
+        </div>
+        <!-- <div>
           <span>IBU:</span>
           <h3>{{ beer.ibu }}</h3>
         </div>
@@ -27,24 +35,35 @@
         <div>
           <span>COPO IDEAL:</span>
           <h3>{{ beer.glass }}</h3>
-        </div>
+        </div> -->
       </div>
     </div>
 
     <div class="beer-img">
-      <img :src="require(`@/assets/${beer.image}`)" alt="" />
+      <img
+        :src="require(`@/assets/${beer.name.replace(' ', '') + '.png'}`)"
+        alt=""
+      />
     </div>
   </div>
 </template>
 
 <script>
-import beerData from '../beer.json';
-
+import http from "@/http";
 export default {
   data() {
     return {
-      beers: beerData,
+      beers: [],
     };
+  },
+  mounted() {
+    http
+      .get("products/list")
+      .then((response) => {
+        console.log(response);
+        this.beers = response.data;
+      })
+      .catch((erro) => console.log(erro));
   },
 };
 </script>
@@ -74,7 +93,7 @@ export default {
         width: 580px;
       }
       ::after {
-        content: '';
+        content: "";
         height: 1px;
         display: block;
         margin-top: 8px;
@@ -100,12 +119,12 @@ export default {
         span {
           display: flex;
           color: #e58200;
-          font-family: 'Inter', sans-serif;
+          font-family: "Inter", sans-serif;
           font-size: 16px;
           font-weight: 400;
         }
         h3 {
-          font-family: 'Roboto Slab', serif;
+          font-family: "Roboto Slab", serif;
           font-size: 24px;
           font-weight: 500;
         }

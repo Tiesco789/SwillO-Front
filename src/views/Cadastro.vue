@@ -3,18 +3,18 @@
     <div class="title">
       <h1>Fazer cadastro</h1>
     </div>
-    <form action="">
+    <form @submit.prevent="enviarFormulario">
       <label for="">Nome</label>
-      <input required type="name" />
+      <input required type="name" v-model="user.name" />
 
       <label for="">Email</label>
-      <input required type="email" />
+      <input required type="email" v-model="user.email" />
 
       <label for="">Senha</label>
-      <input required type="password" />
+      <input required type="password" v-model="user.password" />
 
       <label for="">Repita sua Senha</label>
-      <input required type="password" />
+      <input required type="password" v-model="user.repeat_password" />
 
       <button>Finalizar cadastro</button>
     </form>
@@ -22,9 +22,31 @@
 </template>
 
 <script>
+import http from "@/http";
 export default {
   setup() {
     return {};
+  },
+  data: function () {
+    return {
+      user: {
+        name: "",
+        password: "",
+        repeat_password: "",
+        email: "",
+      },
+    };
+  },
+  methods: {
+    enviarFormulario() {
+      http
+        .post("user/create", this.user)
+        .then((resposta) => {
+          console.log(resposta);
+          this.$router.push({ name: "Login" });
+        })
+        .catch((erro) => console.log(erro));
+    },
   },
 };
 </script>
@@ -40,7 +62,7 @@ export default {
   .title {
     padding-bottom: 32px;
     ::after {
-      content: '';
+      content: "";
       display: block;
       background-color: rgb(56, 53, 65);
       height: 2px;
@@ -90,7 +112,7 @@ export default {
       cursor: pointer;
       margin-top: 20px;
       font-size: 16px;
-      font-family: 'Roboto Slab', serif;
+      font-family: "Roboto Slab", serif;
       font-weight: 500;
       transition: background-color 0.2s ease-in-out;
 

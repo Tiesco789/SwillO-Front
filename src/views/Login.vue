@@ -3,12 +3,12 @@
     <div class="title">
       <h1>Fazer Login</h1>
     </div>
-    <form action="">
+    <form @submit.prevent="efetuarLogin">
       <label for="">Email</label>
-      <input required type="email" />
+      <input required type="email" v-model="user.name" />
 
       <label for="">Senha</label>
-      <input required type="password" />
+      <input required type="password" v-model="user.password" />
 
       <button>Fazer Login</button>
     </form>
@@ -16,9 +16,34 @@
 </template>
 
 <script>
+import http from "@/http";
 export default {
   setup() {
     return {};
+  },
+  data: function () {
+    return {
+      user: {
+        name: "",
+        password: "",
+        repeat_password: "",
+        email: "",
+      },
+    };
+  },
+  methods: {
+    efetuarLogin() {
+      http
+        .post("api/login", this.user)
+        .then((response) => {
+          console.log(response);
+          this.$store.state.token = response.data.token;
+
+          // window.location.reload()
+          this.$router.push({ name: "Home" });
+        })
+        .catch((erro) => console.log(erro));
+    },
   },
 };
 </script>
@@ -34,7 +59,7 @@ export default {
   .title {
     padding-bottom: 32px;
     ::after {
-      content: '';
+      content: "";
       display: block;
       background-color: rgb(56, 53, 65);
       height: 2px;
@@ -84,7 +109,7 @@ export default {
       cursor: pointer;
       margin-top: 20px;
       font-size: 16px;
-      font-family: 'Roboto Slab', serif;
+      font-family: "Roboto Slab", serif;
       font-weight: 500;
     }
   }

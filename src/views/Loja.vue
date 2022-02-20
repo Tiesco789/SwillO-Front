@@ -1,3 +1,4 @@
+/* eslint-disable */
 <template>
   <h1>Escolha seu produto</h1>
 
@@ -33,8 +34,8 @@
 </template>
 
 <script>
-import beersData from '../beer.json';
-import glassData from '../glass.json';
+import beersData from "../beer.json";
+import glassData from "../glass.json";
 
 export default {
   data() {
@@ -95,7 +96,7 @@ h1 {
       font-size: 16px;
       font-weight: bold;
       cursor: pointer;
-      font-family: 'Roboto Slab', serif;
+      font-family: "Roboto Slab", serif;
       transition: background-color 0.1s ease-in-out;
 
       &:hover {

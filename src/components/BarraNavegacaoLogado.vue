@@ -1,15 +1,40 @@
 <template>
-  <div>
-    <Barra />
-    <router-view />
+  <div id="nav">
+    <div class="links">
+      <img class="logo" :src="require(`@/assets/logo.svg`)" />
+      <router-link to="/">SOBRE A CERVEJA</router-link>
+      <router-link to="/contato">CONTATO</router-link>
+      <router-link to="/loja">LOJA</router-link>
+    </div>
+
+    <!-- <div class="button-login">
+      <router-link class="login" to="/login">Fazer Login</router-link>
+      <span
+        >ou
+        <router-link class="register" to="/cadastro"
+          >Cadastre-se</router-link
+        ></span
+      >
+    </div> -->
+    <div class="button-login">
+      <a href="#" class="nav-link" @click.prevent="efetuarLogout">Logout</a>
+    </div>
+
+    <div>
+      <router-link to="/carrinho">
+        <img class="cart" :src="require(`@/assets/cart.svg`)" />
+      </router-link>
+    </div>
   </div>
 </template>
-
 <script>
-import Barra from "@/components/Barra";
 export default {
-  components: {
-    Barra,
+  methods: {
+    efetuarLogout() {
+      localStorage.removeItem("token");
+      this.$router.push({ name: "Home" });
+      // window.location.reload()
+    },
   },
 };
 </script>
