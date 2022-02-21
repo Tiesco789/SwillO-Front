@@ -4,6 +4,7 @@
   <BarraNavegacaoDeslogado v-else />
 </template>
 <script>
+import store from "@/store/index.js";
 import BarraNavegacaoDeslogado from "@/components/BarraNavegacaoDeslogado";
 import BarraNavegacaoLogado from "@/components/BarraNavegacaoLogado";
 /* eslint-disable */
@@ -13,8 +14,10 @@ export default {
       BarraNavegacaoDeslogado
   },
   computed: {
+    
     usuarioestaLogado() {
-        return Boolean(localStorage.getItem('token'))
+        console.log(store.state.token)
+        return Boolean(this.$store.state.token)
     }
   }
 }

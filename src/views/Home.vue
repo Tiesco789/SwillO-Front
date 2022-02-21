@@ -1,12 +1,12 @@
 <template>
   <div class="beers-container" v-for="beer in beers" :key="beer.name">
     <div class="beer-description">
-      <!-- <div class="beer-title">
-        <h3>{{ beer.title.slice(0, 7) }} {{ beer.title.slice(6) }}</h3>
-      </div> -->
-      <!-- <p>
+      <div class="beer-title">
+        <h3>{{ beer.name.slice(0, 7) }} {{ beer.name.slice(6) }}</h3>
+      </div>
+      <p>
         {{ beer.description }}
-      </p> -->
+      </p>
       <div class="beer-info">
         <div>
           <span>TIPO:</span>
@@ -20,14 +20,19 @@
           <span>VALOR:</span>
           <h3>R$ {{ beer.value }}</h3>
         </div>
+        <div>
+          <span>ALCOOL:</span>
+          <h3>{{ beer.alcool }}%</h3>
+        </div>
+        <div>
+          <span>IBU:</span>
+          <h3>{{ beer.ibu }}</h3>
+        </div>
         <!-- <div>
           <span>IBU:</span>
           <h3>{{ beer.ibu }}</h3>
         </div>
-        <div>
-          <span>ALCOOL:</span>
-          <h3>{{ beer.alcohol }}%</h3>
-        </div>
+        
         <div>
           <span> ºC IDEAL:</span>
           <h3>{{ beer.temperature_one }} ºC a {{ beer.temperature_two }}ºC</h3>
@@ -40,10 +45,7 @@
     </div>
 
     <div class="beer-img">
-      <img
-        :src="require(`@/assets/${beer.name.replace(' ', '') + '.png'}`)"
-        alt=""
-      />
+      <img :src="require(`@/assets/${beer.image + '.png'}`)" alt="" />
     </div>
   </div>
 </template>

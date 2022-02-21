@@ -4,18 +4,11 @@
       <img class="logo" :src="require(`@/assets/logo.svg`)" />
       <router-link to="/">SOBRE A CERVEJA</router-link>
       <router-link to="/contato">CONTATO</router-link>
-      <router-link to="/loja">LOJA</router-link>
-    </div>
-
-    <!-- <div class="button-login">
-      <router-link class="login" to="/login">Fazer Login</router-link>
-      <span
-        >ou
-        <router-link class="register" to="/cadastro"
-          >Cadastre-se</router-link
-        ></span
+      <router-link v-if="!usuarioAdmin" to="/loja">LOJA</router-link>
+      <router-link v-if="usuarioAdmin" to="/cadastrar-produto"
+        >CADASTRAR PRODUTO</router-link
       >
-    </div> -->
+    </div>
     <div class="button-login">
       <a href="#" class="nav-link" @click.prevent="efetuarLogout">Logout</a>
     </div>
@@ -31,9 +24,14 @@
 export default {
   methods: {
     efetuarLogout() {
-      localStorage.removeItem("token");
-      this.$router.push({ name: "Home" });
-      // window.location.reload()
+      this.$store.commit("DESLOGAR_USUARIO");
+      this.$router.push({ name: "Login" });
+    },
+  },
+  computed: {
+    usuarioAdmin() {
+      console.log(this.$store.state);
+      return this.$store.state.role == "ROLE_ADMIN";
     },
   },
 };

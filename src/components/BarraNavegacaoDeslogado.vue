@@ -4,7 +4,7 @@
       <img class="logo" :src="require(`@/assets/logo.svg`)" />
       <router-link to="/">SOBRE A CERVEJA</router-link>
       <router-link to="/contato">CONTATO</router-link>
-      <router-link to="/loja">LOJA</router-link>
+      <!-- <router-link to="/loja">LOJA</router-link> -->
     </div>
 
     <div class="button-login">

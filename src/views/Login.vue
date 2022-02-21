@@ -13,13 +13,19 @@
       <button>Fazer Login</button>
     </form>
   </div>
+  <Modal v-show="isVisible" @close="closeModal" />
 </template>
 
 <script>
 import http from "@/http";
+import store from "@/store/index.js";
+import Modal from "@/components/Modal";
 export default {
   setup() {
     return {};
+  },
+  components: {
+    Modal,
   },
   data: function () {
     return {
@@ -31,18 +37,33 @@ export default {
       },
     };
   },
+  computed: {
+    isVisible() {
+      console.log(store.state.erro);
+      return Boolean(store.state.erro);
+    },
+  },
   methods: {
     efetuarLogin() {
       http
         .post("api/login", this.user)
         .then((response) => {
-          console.log(response);
-          this.$store.state.token = response.data.token;
-
-          // window.location.reload()
+          console.log(response.data.token);
+          store.commit("DEFINIR_USUARIO_LOGADO", {
+            token: response.data.token,
+            role: response.data.autorizacao,
+          });
           this.$router.push({ name: "Home" });
         })
-        .catch((erro) => console.log(erro));
+        .catch((erro) => {
+          store.commit("EXIBE_ERRO", {
+            erro: true,
+            erroMessage: "Email ou senha estão incorretas",
+          });
+        });
+    },
+    closeModal() {
+      store.commit("FECHA_ERRO");
     },
   },
 };

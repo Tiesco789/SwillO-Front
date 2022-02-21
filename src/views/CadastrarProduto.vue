@@ -1,6 +1,6 @@
 <template>
   <h1>Registrar Produto</h1>
-  <form action="">
+  <form @submit.prevent="cadastrarProduto">
     <div class="list-container">
       <select name="products" id="products">
         <option value="hide">Selecione seu produto</option>
@@ -9,16 +9,27 @@
         <option value="taça">Taça</option>
       </select>
 
-      <input required type="name" placeholder="Nome*" />
-      <input required type="number" placeholder="Preço*" />
-      <input required type="number" placeholder="ml*" />
-      <input type="text" placeholder="Tipo" />
-      <input type="text" placeholder="IBU" />
-      <input type="text" placeholder="Alcool" />
-      <input type="text" placeholder="ºC IDEAL:" />
-      <input type="text" placeholder="Copo Ideal" />
+      <input required type="name" placeholder="Nome*" v-model="products.name" />
+      <input
+        required
+        type="number"
+        placeholder="Preço*"
+        v-model="products.value"
+      />
+      <input type="text" placeholder="Tipo" v-model="products.category" />
+      <input type="text" placeholder="IBU" v-model="products.ibu" />
+      <input type="text" placeholder="Alcool" v-model="products.alcool" />
+      <input type="text" placeholder="Imagen" v-model="products.image" />
+      <input
+        type="text"
+        placeholder="Descricao"
+        v-model="products.description"
+      />
 
-      <div>
+      <!-- <input type="text" placeholder="ºC IDEAL:" /> -->
+      <!-- <input type="text" placeholder="Copo Ideal" /> -->
+
+      <!-- <div>
         <label>
           Selecione a imagem
           <input
@@ -28,16 +39,41 @@
             accept=".png, .jpeg, .jpg"
           />
         </label>
-      </div>
+      </div> -->
       <button>Cadastrar Produto</button>
     </div>
   </form>
 </template>
 
 <script>
+import http from "@/http";
 export default {
   setup() {
     return {};
+  },
+  data: function () {
+    return {
+      products: {
+        name: "",
+        value: "",
+        description: "",
+        image: "",
+        ibu: "",
+        alcool: "",
+        category: "",
+      },
+    };
+  },
+  methods: {
+    cadastrarProduto() {
+      http
+        .post("products/create", this.products)
+        .then((response) => {
+          console.log(response);
+          this.$router.push({ name: "Home" });
+        })
+        .catch((erro) => console.log(erro));
+    },
   },
 };
 </script>
@@ -68,7 +104,7 @@ h1 {
     background-color: #2a2633;
     color: white;
     font-size: 16px;
-    font-family: 'Inter', sans-serif;
+    font-family: "Inter", sans-serif;
     padding: 8px;
     margin-bottom: 16px;
   }
@@ -79,7 +115,7 @@ h1 {
     color: white;
     font-size: 16px;
     margin: 8px;
-    font-family: 'Inter', sans-serif;
+    font-family: "Inter", sans-serif;
     padding: 12px 20px;
     width: 400px;
 
@@ -94,7 +130,7 @@ h1 {
 
   div {
     label {
-      font-family: 'Roboto Slab', serif;
+      font-family: "Roboto Slab", serif;
       padding: 10px 20px;
       width: 100%;
       outline: 1px solid #2a2633;
@@ -127,7 +163,7 @@ h1 {
     cursor: pointer;
     margin-top: 32px;
     font-size: 16px;
-    font-family: 'Roboto Slab', serif;
+    font-family: "Roboto Slab", serif;
     font-weight: 500;
     width: 400px;
     transition: background-color 0.2s ease-in-out;

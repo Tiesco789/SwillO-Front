@@ -8,6 +8,7 @@ module.exports = {
     parser: "babel-eslint",
   },
   rules: {
+    "no-unused-vars": "off",
     "no-console": process.env.NODE_ENV === "production" ? "warn" : "off",
     "no-debugger": process.env.NODE_ENV === "production" ? "warn" : "off",
     "vue/multi-word-component-names": [
@@ -22,6 +23,7 @@ module.exports = {
           "Carrinho",
           "Contato",
           "CadastrarProduto",
+          "Modal",
         ],
       },
     ],

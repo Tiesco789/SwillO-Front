@@ -3,21 +3,21 @@
   <h1>Escolha seu produto</h1>
 
   <div class="store">
-    <div class="card" v-for="beer in beers" :key="beer.id">
+    <div class="card" v-for="beer in beers" :key="beer.name">
       <div class="product-img">
-        <img :src="require(`@/assets/${beer.image}`)" alt="" />
+        <img :src="require(`@/assets/${beer.image + '.png'}`)" alt="" />
       </div>
       <div class="info-card">
-        <span>{{ beer.title }} | {{ beer.vol }}ml</span>
+        <span>{{ beer.name }} </span>
       </div>
-      <span> R$ {{ beer.price }}.00</span>
+      <span> R$ {{ beer.value }}.00</span>
       <button class="add-to-cart">
         Adicionar ao carrinho
         <img :src="require(`@/assets/cart.svg`)" alt="" />
       </button>
     </div>
 
-    <div class="card" v-for="glass in glasses" :key="glass.id">
+    <!-- <div class="card" v-for="glass in glasses" :key="glass.id">
       <div class="product-img">
         <img :src="require(`@/assets/${glass.image}`)" alt="" />
       </div>
@@ -29,20 +29,29 @@
         Adicionar ao carrinho
         <img :src="require(`@/assets/cart.svg`)" alt="" />
       </button>
-    </div>
+    </div> -->
   </div>
 </template>
 
 <script>
-import beersData from "../beer.json";
-import glassData from "../glass.json";
-
+// import beersData from "../beer.json";
+// import glassData from "../glass.json";
+import http from "@/http";
 export default {
   data() {
     return {
-      glasses: glassData,
-      beers: beersData,
+      // glasses: glassData,
+      beers: [],
     };
+  },
+  mounted() {
+    http
+      .get("products/list")
+      .then((response) => {
+        console.log(response);
+        this.beers = response.data;
+      })
+      .catch((erro) => console.log(erro));
   },
 };
 </script>
